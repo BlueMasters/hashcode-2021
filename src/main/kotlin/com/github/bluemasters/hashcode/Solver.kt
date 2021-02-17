@@ -18,6 +18,6 @@
 
 package com.github.bluemasters.hashcode
 
-interface Solver {
+fun interface Solver {
     fun solve(challenge: Challenge)
 }

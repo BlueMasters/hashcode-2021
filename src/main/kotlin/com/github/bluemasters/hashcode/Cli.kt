@@ -45,29 +45,30 @@ class Cli(val solvers: SolverRegistry, val challenge: (Path, OutputManager) -> C
         private val source: List<Path> by argument().path(mustExist = true).multiple()
         private val debug by option("--debug", "-d").flag(default = false)
         private val quiet by option("--quiet", "-q").flag(default = false)
-        private val cleanup by option("--cleanup").flag("--no-cleanup", default = true)
+        private val keep: Int by option(help = "Number of results (per source) to keep")
+            .int().default(1)
 
-        private val outputDir by option("--outputDir", "-o").path().default(Path.of("out"))
+        private val outputDir by option("--outputDir", "-o")
+            .path().default(Path.of("out"))
         private val outputExt by option("--outputExt").default("out")
         private val solver by option(
             "-s",
             "--solver",
             help = "Solver name, one of: ${solvers.availableNames}"
-        )
-            .default(solvers.default)
+        ).default(solvers.default)
 
         override fun run() {
             val logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger
             logger.level = if (debug) Level.DEBUG else if (quiet) Level.WARN else Level.INFO
-            val h = OutputManager(outputDir = outputDir, outputExt = outputExt)
+            val outputManager = OutputManager(outputDir = outputDir, outputExt = outputExt)
+            val solver = solvers.getByName(solver)
             source.map {
-                val challenge = challenge(it, h)
-                val solver = solvers.getByName(solver)
+                val challenge = challenge(it, outputManager)
                 challenge.read()
                 challenge.solve(solver)
                 challenge.write()
-                if (cleanup) {
-                    challenge.cleanup()
+                if (keep > 0) {
+                    challenge.cleanup(keep)
                 }
             }
         }
@@ -76,8 +77,8 @@ class Cli(val solvers: SolverRegistry, val challenge: (Path, OutputManager) -> C
     inner class Cleanup : CliktCommand(help = "Cleanup the outputs") {
         private val outputDir by option("--outputDir", "-o").path().default(Path.of("out"))
         private val outputExt by option("--outputExt").default("out")
-        private val keep: Int by option(help = "Number of results (per input) to keep").int()
-            .default(1)
+        private val keep: Int by option(help = "Number of results (per input) to keep")
+            .int().default(1)
 
         override fun run() {
             val h = OutputManager(outputDir = outputDir, outputExt = outputExt)

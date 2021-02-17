@@ -65,12 +65,13 @@ abstract class Challenge(private val inFile: Path, private val outputManager: Ou
     fun write() {
         val tmpFile =
             Files.createTempFile(outputManager.outputDir.toAbsolutePath(), null, ".tmp").toFile()
-        val writer = tmpFile.printWriter()
         logger.debug("writing to $tmpFile")
-        writeOut(writer)
-        writer.close()
+        tmpFile.printWriter().use {
+            writeOut(it)
+        }
         val outFile =
-            outputManager.outputDir.resolve("${name}.${"%020d".format(score)}.${outputManager.outputExt}")
+            outputManager.outputDir
+                .resolve("${name}.${"%020d".format(score)}.${outputManager.outputExt}")
                 .toFile()
         logger.debug("renaming to $outFile")
         tmpFile.renameTo(outFile)
