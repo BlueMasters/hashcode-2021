@@ -62,8 +62,9 @@ class Cli(val solvers: SolverRegistry, val challenge: (Path, OutputManager) -> C
             logger.level = if (debug) Level.DEBUG else if (quiet) Level.WARN else Level.INFO
             val outputManager = OutputManager(outputDir = outputDir, outputExt = outputExt)
             val solver = solvers.getByName(solver)
-            source.map {
-                val challenge = challenge(it, outputManager)
+            source
+                .map{ challenge(it, outputManager)}
+                .forEach { challenge ->
                 challenge.read()
                 challenge.solve(solver)
                 challenge.write()

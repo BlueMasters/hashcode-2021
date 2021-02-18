@@ -80,7 +80,7 @@ abstract class Challenge(private val inFile: Path, private val outputManager: Ou
     // Returns the best result from all outputs.
     fun parseBestResult(nTh: Int = 0) {
         val f = outputManager.namesToSortedResultFiles()?.get(name)?.asReversed()?.getOrNull(nTh)
-        check(f != null) {
+        checkNotNull(f) {
             "bestResult[${nTh}] not found."
         }
         parseOut(Scanner(f))
