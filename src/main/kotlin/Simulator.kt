@@ -1,5 +1,14 @@
 object Simulator {
 
+    fun validate(simulation: Simulation): Boolean {
+        for(intersection in simulation.intersections) {
+            val total = intersection.schedule.size
+            val computed = intersection.schedule.map { it.street }.toSet().size
+            if(computed < total) return false
+        }
+        return true
+    }
+
     fun reset(simulation: Simulation): Simulation {
 
         simulation.streets.forEach { s -> s.queue = mutableListOf()}
@@ -14,6 +23,11 @@ object Simulator {
     }
 
     fun run(simulation: Simulation): Long {
+
+        if(!validate(simulation)) {
+            println("Scheduled problem")
+            return 0
+        }
 
         reset(simulation)
 
