@@ -28,6 +28,7 @@ data class Intersection(
 ) {
     fun turn(crtTime : Int) : String? {
         val totalScheduleTime = schedule.map { it.time }.sum()
+        if(totalScheduleTime == 0) return null
         val reminder = crtTime % totalScheduleTime
         var acc = 0
         for(scheduleEntry in schedule) {
