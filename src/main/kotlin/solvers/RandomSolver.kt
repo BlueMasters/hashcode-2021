@@ -11,7 +11,7 @@ object RandomSolver : Solver {
 
         val sim = challenge.simulation
 
-        val usedStreets = sim.cars.flatMap { it.streets.dropLast(1) }
+        val usedStreets = sim.cars.flatMap { it.streets.dropLast(1) }.toSet()
 
         usedStreets
             .groupBy { it.intersectionEnd }

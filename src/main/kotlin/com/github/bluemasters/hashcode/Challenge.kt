@@ -58,7 +58,6 @@ abstract class Challenge(val inFile: Path, private val outputManager: OutputMana
     fun solve(solver: Solver) {
         logger.debug("solving using $solver")
         solver.solve(this)
-        logger.debug("score = $score")
     }
 
     // Write the output file using the "writeOut" abstract function.
@@ -69,9 +68,11 @@ abstract class Challenge(val inFile: Path, private val outputManager: OutputMana
         tmpFile.printWriter().use {
             writeOut(it)
         }
+        val finalScore = score
+        println(finalScore)
         val outFile =
             outputManager.outputDir
-                .resolve("${name}.${"%020d".format(score)}.${outputManager.outputExt}")
+                .resolve("${name}.${"%020d".format(finalScore)}.${outputManager.outputExt}")
                 .toFile()
         logger.debug("renaming to $outFile")
         tmpFile.renameTo(outFile)

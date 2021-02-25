@@ -1,0 +1,173 @@
+===============
+in/a.in
+===============
+Unused streets: 1
+
+Street Use:
+ cnt: 4
+ sum: 5
+ min: 1
+ max: 2
+ avg: 1
+ median: 1
+
+Cars total time:
+ cnt: 2
+ sum: 12
+ min: 5
+ max: 7
+ avg: 6
+ median: 7
+
+Cars total intersections:
+ cnt: 2
+ sum: 7
+ min: 3
+ max: 4
+ avg: 3
+ median: 4
+
+===============
+in/b.in
+===============
+Unused streets: 1138
+
+Street Use:
+ cnt: 7964
+ sum: 25740
+ min: 1
+ max: 29
+ avg: 3
+ median: 2
+
+Cars total time:
+ cnt: 1000
+ sum: 1580330
+ min: 65
+ max: 5069
+ avg: 1580
+ median: 1450
+
+Cars total intersections:
+ cnt: 1000
+ sum: 26740
+ min: 2
+ max: 86
+ avg: 26
+ median: 25
+
+===============
+in/c.in
+===============
+Unused streets: 23558
+
+Street Use:
+ cnt: 11472
+ sum: 74813
+ min: 1
+ max: 66
+ avg: 6
+ median: 3
+
+Cars total time:
+ cnt: 1000
+ sum: 417052
+ min: 4
+ max: 1649
+ avg: 417
+ median: 312
+
+Cars total intersections:
+ cnt: 1000
+ sum: 75813
+ min: 2
+ max: 295
+ avg: 75
+ median: 57
+
+===============
+in/d.in
+===============
+Unused streets: 12054
+
+Street Use:
+ cnt: 83874
+ sum: 199000
+ min: 1
+ max: 12
+ avg: 2
+ median: 2
+
+Cars total time:
+ cnt: 1000
+ sum: 5109631
+ min: 4504
+ max: 5770
+ avg: 5109
+ median: 5107
+
+Cars total intersections:
+ cnt: 1000
+ sum: 200000
+ min: 200
+ max: 200
+ avg: 200
+ median: 200
+
+===============
+in/e.in
+===============
+Unused streets: 42
+
+Street Use:
+ cnt: 956
+ sum: 5051
+ min: 1
+ max: 20
+ avg: 5
+ median: 4
+
+Cars total time:
+ cnt: 1000
+ sum: 305067
+ min: 5
+ max: 691
+ avg: 305
+ median: 296
+
+Cars total intersections:
+ cnt: 1000
+ sum: 6051
+ min: 2
+ max: 10
+ avg: 6
+ median: 6
+
+===============
+in/f.in
+===============
+Unused streets: 4667
+
+Street Use:
+ cnt: 5333
+ sum: 135512
+ min: 1
+ max: 540
+ avg: 25
+ median: 6
+
+Cars total time:
+ cnt: 1000
+ sum: 732514
+ min: 9
+ max: 1999
+ avg: 732
+ median: 618
+
+Cars total intersections:
+ cnt: 1000
+ sum: 136512
+ min: 2
+ max: 365
+ avg: 136
+ median: 116
