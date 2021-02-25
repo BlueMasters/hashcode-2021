@@ -51,4 +51,8 @@ data class Simulation(
     var t: Int = 0
 ) {
     val streetMap : Map<String, Street> = streets.map { s -> Pair(s.name, s) }.toMap()
+
+    fun incomingStreets(intersection: Intersection) : List<Street> {
+        return streets.filter { it.intersectionEnd == intersection.id }
+    }
 }
