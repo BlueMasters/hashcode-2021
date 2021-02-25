@@ -19,8 +19,6 @@ object Simulator {
 
         for(step in 0 until simulation.duration) {
 
-            println("Step $step")
-
             simulation.t = step
 
             for(intersection in simulation.intersections ) {
