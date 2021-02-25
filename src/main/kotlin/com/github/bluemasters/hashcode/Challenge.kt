@@ -27,7 +27,7 @@ import java.util.*
 /**
  * The abstract Challenge class is the base for all hashcode challenges.
  */
-abstract class Challenge(private val inFile: Path, private val outputManager: OutputManager) {
+abstract class Challenge(val inFile: Path, private val outputManager: OutputManager) {
 
     // Those are the functions that you have to override in your challenge
     abstract fun parseIn(scanner: Scanner)
@@ -38,7 +38,7 @@ abstract class Challenge(private val inFile: Path, private val outputManager: Ou
     // The "name" of a challenge is the input filename without the extension
     // This will be used for to construct the output file and could be used
     // for logging as well.
-    private val name: String
+    val name: String
         get() {
             val name = inFile.fileName.toString()
             return if (name.indexOf(".") > 0) {

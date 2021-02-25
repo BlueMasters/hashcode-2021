@@ -11,9 +11,11 @@ object RandomSolver : Solver {
 
         val sim = challenge.simulation
 
-        sim.streets
+        val usedStreets = sim.cars.flatMap { it.streets.dropLast(1) }
+
+        usedStreets
             .groupBy { it.intersectionEnd }
-            .mapValues { (intersectionId, streets) -> streets.shuffled() }
+            .mapValues { (_, streets) -> streets.shuffled() }
             .forEach { (intersectionId, streets) ->
                 sim.intersections[intersectionId].schedule = streets.map {
                     ScheduleEntry(it.name, 1)

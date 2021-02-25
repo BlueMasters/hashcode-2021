@@ -22,11 +22,13 @@
 
 import com.github.bluemasters.hashcode.SolverRegistry
 import solvers.RandomSolver
+import solvers.StatsSolver
 import solvers.TestSolver
 
 object TrafficSolvers : SolverRegistry() {
     init {
         RandomSolver.register()
         TestSolver.register()
+        StatsSolver.register()
     }
 }
