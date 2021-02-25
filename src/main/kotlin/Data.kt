@@ -17,7 +17,9 @@ data class Street(
 data class ScheduleEntry(
     val street: String,
     var time: Int
-)
+) {
+    constructor(street: Street, time: Int) : this(street.name, time)
+}
 
 data class Intersection(
     val id: Int,
@@ -27,8 +29,8 @@ data class Intersection(
 data class Simulation(
     val duration: Int,
     val bonus: Int,
-    val intersections: List<Intersection>,
-    val streets: List<Street>,
-    val cars: List<Car>,
+    var intersections: MutableList<Intersection>,
+    val streets: MutableList<Street>,
+    val cars: MutableList<Car>,
     var t: Int = 0
 )

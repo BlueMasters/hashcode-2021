@@ -21,9 +21,10 @@
  */
 
 import com.github.bluemasters.hashcode.SolverRegistry
+import solvers.TestSolver
 
 object TrafficSolvers : SolverRegistry() {
     init {
-        // TODO
+        TestSolver.register()
     }
 }

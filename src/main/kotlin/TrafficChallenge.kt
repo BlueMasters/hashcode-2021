@@ -56,9 +56,9 @@ class TrafficChallenge(inFile: Path, outputManager: OutputManager) :
         simulation = Simulation(
             duration,
             bonus,
-            (0 until nIntersection).map { Intersection(it) },
+            (0 until nIntersection).map { Intersection(it) }.toMutableList(),
             streets.values.toMutableList(),
-            cars
+            cars.toMutableList()
         )
 
     }
@@ -75,7 +75,18 @@ class TrafficChallenge(inFile: Path, outputManager: OutputManager) :
      * Output Writer
      */
     override fun writeOut(writer: PrintWriter) {
-        // TODO
+        val scheduledIntersections = simulation.intersections
+            .filter { it.schedule.isNotEmpty() && it.schedule.any { s -> s.time > 0 } }
+
+        writer.println(scheduledIntersections.size)
+        scheduledIntersections.forEach { intersection ->
+            writer.println(intersection.id)
+            val streets = intersection.schedule.filter { s -> s.time > 0 }
+            writer.println(streets.size)
+            streets.forEach {
+                writer.println("${it.street} ${it.time}")
+            }
+        }
     }
 
 
@@ -83,7 +94,14 @@ class TrafficChallenge(inFile: Path, outputManager: OutputManager) :
      * Output Reader (to read an already solved challenge)
      */
     override fun parseOut(scanner: Scanner) {
-        // TODO
+        val nIntersection = scanner.nextInt()
+        (0 until nIntersection).map {
+            val id = scanner.nextInt()
+            simulation.intersections[id].schedule = (0 until scanner.nextInt()).map {
+                ScheduleEntry(scanner.next(), scanner.nextInt())
+            }.toMutableList()
+
+        }
     }
 
     override fun toString(): String {
