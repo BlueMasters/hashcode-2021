@@ -7,7 +7,7 @@ class PizzaChallengeTest {
 
     @Test
     fun `test a_example is properly loaded`() {
-        val challenge = PizzaChallenge(Path.of("in/a_example"), OutputManager())
+        val challenge = TrafficChallenge(Path.of("in/a_example"), OutputManager())
 
         assertThat(challenge.pizzas)
             .hasSize(5)

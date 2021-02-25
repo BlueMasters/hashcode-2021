@@ -21,12 +21,9 @@
  */
 
 import com.github.bluemasters.hashcode.SolverRegistry
-import solvers.RandomSolver
-import solvers.RandomSolverImprove
 
-object PizzaSolvers : SolverRegistry() {
+object TrafficSolvers : SolverRegistry() {
     init {
-        RandomSolver.register()
-        RandomSolverImprove.register()
+        // TODO
     }
 }

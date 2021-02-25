@@ -18,4 +18,4 @@
 
 import com.github.bluemasters.hashcode.Cli
 
-fun main(args: Array<String>) = Cli(PizzaSolvers, ::PizzaChallenge).main(args)
+fun main(args: Array<String>) = Cli(TrafficSolvers, ::TrafficChallenge).main(args)
