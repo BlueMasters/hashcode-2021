@@ -68,7 +68,7 @@ class TrafficChallenge(inFile: Path, outputManager: OutputManager) :
      */
     override val score: Long
         get() {
-            return 0 // you are crap
+            return Simulator.run(simulation)
         }
 
     /**
