@@ -38,6 +38,6 @@ tasks.withType<KotlinCompile> {
 }
 
 application {
-    mainClass.set("PizzaKt")
+    mainClass.set("MainKt")
     applicationName = "pizza"
 }
