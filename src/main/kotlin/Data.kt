@@ -1,4 +1,5 @@
 data class Car(
+    val id: Int,
     val streets: MutableList<Street> = mutableListOf(),
     var crtStreet : Int = 0,
     var relativeTime: Int = 0,

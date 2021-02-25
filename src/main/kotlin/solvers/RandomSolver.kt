@@ -4,6 +4,7 @@ import ScheduleEntry
 import TrafficChallenge
 import com.github.bluemasters.hashcode.Challenge
 import com.github.bluemasters.hashcode.Solver
+import kotlin.random.Random
 
 object RandomSolver : Solver {
     override fun solve(challenge: Challenge) {
@@ -18,7 +19,7 @@ object RandomSolver : Solver {
             .mapValues { (_, streets) -> streets.shuffled() }
             .forEach { (intersectionId, streets) ->
                 sim.intersections[intersectionId].schedule = streets.map {
-                    ScheduleEntry(it.name, 1)
+                    ScheduleEntry(it.name, Random.nextInt(1, 3))
                 }.toMutableList()
             }
     }

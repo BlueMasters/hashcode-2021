@@ -49,6 +49,7 @@ class TrafficChallenge(inFile: Path, outputManager: OutputManager) :
 
         val cars = (0 until nCar).map {
             Car(
+                id = it,
                 streets = (1..scanner.nextInt()).map { streets[scanner.next()]!! }.toMutableList(),
             )
         }
