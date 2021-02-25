@@ -19,7 +19,7 @@ object RandomSolver : Solver {
             .forEach { (intersectionId, streets) ->
                 sim.intersections[intersectionId].schedule = streets.map {
                     ScheduleEntry(it.name, 1)
-                }
+                }.toMutableList()
             }
     }
 
