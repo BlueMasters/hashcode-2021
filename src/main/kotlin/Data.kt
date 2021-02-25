@@ -1,5 +1,5 @@
 data class Car(
-    val streets: List<Street> = mutableListOf(),
+    val streets: MutableList<Street> = mutableListOf(),
     var crtStreet : Int = 0,
     var relativeTime: Int = 0,
     var finished: Int? = null
@@ -24,7 +24,7 @@ data class ScheduleEntry(
 
 data class Intersection(
     val id: Int,
-    var schedule: List<ScheduleEntry> = mutableListOf()
+    var schedule: MutableList<ScheduleEntry> = mutableListOf()
 ) {
     fun turn(crtTime : Int) : String? {
         val totalScheduleTime = schedule.map { it.time }.sum()
